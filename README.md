@@ -1,4 +1,28 @@
-# Termux application
+Termux custom branch for astro, hypothetically for **Building a Termux app with a hidden title bar in Samsung DEX mode inside another Termux app**
+
+code copied and pasted and merged together from: 
+
+- https://github.com/termux/termux-app.git
+- https://github.com/intellis-team/termux-app.git
+- https://github.com/fornwall/termux-app/tree/update-gradle
+- https://github.com/lzhiyong/termux-ndk
+
+```
+# Termux
+pkg install wget gradle
+wget https://github.com/lzhiyong/termux-ndk/releases/download/android-sdk/android-sdk-aarch64.zip
+wget https://github.com/lzhiyong/termux-ndk/releases/download/android-ndk/android-ndk-r27b-aarch64.zip
+unzip android-sdk-aarch64.zip 
+unzip android-ndk-r27b-aarch64.zip
+git clone -b custom-build-for-astro https://github.com/robertkirkman/termux-app.git
+cd termux-app
+gradle assembleDebug
+for i in $(find ~/.gradle/ | grep aapt2$); do cp ~/android-sdk/build-tools/35.0.0/aapt2 $i; done
+gradle assembleDebug
+cp app/build/outputs/apk/debug/termux-app_apt-android-7-debug_universal.apk ~/termux-app-astro-custom.apk
+```
+
+# Termux application original README below
 
 [![Build status](https://github.com/termux/termux-app/workflows/Build/badge.svg)](https://github.com/termux/termux-app/actions)
 [![Testing status](https://github.com/termux/termux-app/workflows/Unit%20tests/badge.svg)](https://github.com/termux/termux-app/actions)
