@@ -12,6 +12,7 @@ code copied and pasted and merged together from:
 pkg install wget gradle
 wget https://github.com/lzhiyong/termux-ndk/releases/download/android-sdk/android-sdk-aarch64.zip
 wget https://github.com/lzhiyong/termux-ndk/releases/download/android-ndk/android-ndk-r27b-aarch64.zip
+sed -i 's/27.1.12297006/27.0.12077973/g' ~/android-ndk-r27b/source.properties
 unzip android-sdk-aarch64.zip 
 unzip android-ndk-r27b-aarch64.zip
 git clone -b custom-build-for-astro https://github.com/robertkirkman/termux-app.git
